@@ -1,0 +1,20 @@
+# Task 1: Scan Local Network for Open Ports
+
+## Tools Used
+- Nmap
+
+## Objective
+Find open ports on devices in the local network to understand network exposure.
+
+## IP Range Scanned by using cmd [ip a]
+`10.0.2.0/24`
+
+## Results
+used cmd [sudo nmap -sS 10.0.2.0/24 -oN local_scan.txt] to ferform scan on ip 10.0.2.0/24
+- `10.0.2.2`: Ports 135 (msrpc), 445 (microsoft-ds)
+- `10.0.2.3`: Port 53 (domain)
+- `10.0.2.15`: No open ports
+
+## Conclusion
+This scan identified services exposed on the network. Ports 445 and 135 could pose security risks.
+
