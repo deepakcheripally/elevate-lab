@@ -1,0 +1,79 @@
+Objective
+Analyze a phishing email and identify red flags such as spoofed addresses, suspicious links, and malicious intent.
+
+Files Included
+- `phishing_sample.txt`: The suspicious email content.
+- `phishing_analysis.txt`: Detailed report of phishing indicators.
+- `README.md`: Overview of the task.
+
+Key Learnings
+- Identified spoofed domains and fake urgency.
+- Practiced spotting suspicious links and attachments.
+- Understood social engineering in phishing emails.
+
+Tools Used
+- Kali Linux (Nano, Git)
+- Manual analysis (no paid tools used)
+
+
+ Phishing Email Analysis Report
+
+ Email Overview
+- From: support@paypa1.com
+- Subject: Urgent: Your Account Has Been Suspended!
+- Attachment: Account_Verification_Form.zip
+
+ Phishing Indicators
+
+1. Spoofed Email Address**  
+  - Domain is `paypa1.com`, not `paypal.com` (number 1 instead of "l"). can be used any other also.
+
+2. Fake Urgency**  
+  - Uses urgent language: “verify within 24 hours or account will be suspended”.
+
+3. Suspicious Link**  
+  - Displayed as PayPal but links to `https://paypal.account-verify.com/login` which is not a real PayPal domain.
+
+4. Malicious Attachment**  
+  - Contains a file `Account_Verification_Form.zip`, which could have malware or a fake form.
+
+5. No Personalization**  
+  - Generic greeting "Dear Customer" — real companies usually address you by name.
+
+6. Social Engineering**  
+  - Attempts to scare the user into quick action without thinking logically.
+
+Conclusion
+This email is clearly a phishing attempt. It tries to mimic PayPal branding, adds urgency, uses a lookalike domain, and includes a risky attachment. It should be reported and deleted.
+
+
+
+From: support@paypa1.com
+Subject: Urgent: Your Account Has Been Suspended!
+
+Dear Customer,
+
+We have detected unusual activity on your PayPal account and have temporarily suspended access for your protection.
+
+Please verify your identity by clicking the link below:
+
+ https://paypal.account-verify.com/login
+
+Failure to verify your identity within 24 hours will result in permanent account suspension.
+
+Thank you for choosing PayPal.
+
+Sincerely,  
+PayPal Security Team
+
+[Attachment: Account_Verification_Form.zip]
+
+
+
+
+Result:
+the phished detaiols will be shown in the kali terminal where we created the phished URL.
+
+
+
+
