@@ -1,0 +1,104 @@
+# Task 4 – Linux Firewall Setup (UFW)
+
+## What I Did
+This task required configuring a firewall on Linux using UFW to:
+- Set the default policy to **deny incoming** and **allow outgoing** traffic.
+- Allow SSH (port 22) to prevent remote lockout.
+- Block Telnet (port 23).
+- Enable the firewall and verify that port 23 is blocked.
+
+## Steps
+1. Installed UFW and backed up current firewall rules.
+2. Set default deny/allow policies.
+3. Allowed SSH traffic.
+4. Blocked Telnet (port 23).
+5. Enabled the firewall.
+6. Saved firewall status to `ufw-status.txt`.
+7. Verified blocking with `nmap` scan.
+
+## Evidence
+- **ufw-status.txt** – shows active rules.
+- **outputs.txt** – terminal output from commands.
+- **screenshots/** – GUI or terminal screenshots of the firewall and tests.
+
+## Verification
+- SSH allowed 
+- Telnet blocked 
+- Firewall enabled and running 
+
+## How to Reproduce
+Run commands from `commands.txt` on any Debian/Ubuntu/Kali Linux system.
+
+
+
+# Install UFW
+sudo apt update
+sudo apt install ufw -y
+
+# Backup current rules
+sudo iptables-save > ~/iptables-before.rules
+sudo cp /etc/ufw/user.rules ~/user.rules.before 2>/dev/null
+
+# Set defaults
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+┌──(kali㉿kali)-[~]
+└─$ sudo ufw default deny incoming
+sudo ufw default allow outgoing
+Default incoming policy changed to 'deny'
+(be sure to update your rules accordingly)
+Default outgoing policy changed to 'allow'
+(be sure to update your rules accordingly)
+
+
+
+# Allow SSH
+sudo ufw allow 22/tcp
+
+┌──(kali㉿kali)-[~]
+└─$ sudo ufw allow 22/tcp
+Rules updated
+Rules updated (v6)
+
+
+
+# Block Telnet
+sudo ufw deny 23/tcp
+
+┌──(kali㉿kali)-[~]
+└─$ sudo ufw deny 23/tcp
+Rules updated
+Rules updated (v6)
+
+
+
+# Enable firewall
+sudo ufw enable
+
+┌──(kali㉿kali)-[~]
+└─$ sudo ufw enable
+Firewall is active and enabled on system startup
+
+
+# Save status
+sudo ufw status verbose > ~/ufw-status.txt
+
+# Install nmap
+sudo apt install nmap -y
+
+
+# Test port 23
+nmap -p 23 127.0.0.1
+
+┌──(kali㉿kali)-[~]
+└─$ nmap -p 23 127.0.0.1
+
+Starting Nmap 7.95 ( https://nmap.org ) at 2025-08-10 09:45 EDT
+Nmap scan report for localhost (127.0.0.1)
+Host is up (0.00020s latency).
+PORT   STATE  SERVICE
+23/tcp closed telnet
+Nmap done: 1 IP address (1 host up) scanned in 0.09 seconds
+
+
